@@ -6,7 +6,6 @@
     <title>Golden Gasolinera - Facturación</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* 🔹 Configuración general del cuerpo para evitar desplazamiento horizontal */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,58 +16,41 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Evita el desplazamiento horizontal */
-            width: 100%;
         }
-
-        /* 🔹 Ajustes en el header */
         header {
             background-color: #00264d;
             padding: 20px;
         }
-
         .logo {
             max-width: 200px;
             pointer-events: none;
             user-drag: none;
             -webkit-user-drag: none;
         }
-
-        /* 🔹 Contenedor de estaciones */
         .estaciones-container {
             display: flex;
             justify-content: center;
-            gap: 15px; /* Reduce separación entre tarjetas */
+            gap: 20px;
             flex-wrap: wrap;
-            padding: 10px;
+            padding: 20px;
             flex-grow: 1;
-            max-width: 100%; /* Evita que se extienda más del tamaño de la pantalla */
         }
-
-        /* 🔹 Tarjetas de estaciones */
         .estacion {
             background-color: #00264d;
             border-radius: 10px;
-            padding: 10px; /* Reduce el espacio interno */
-            width: 250px;
-            height: 320px; /* Ajustamos altura para evitar estiramientos */
+            padding: 15px;
+            width: 250px; /* Fijar ancho */
+            height: 350px; /* Fijar alto para que no crezca con la imagen */
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; /* Espaciado uniforme */
         }
 
-        /* 🔹 Ajuste en el espacio entre la imagen y el título */
-        .estacion h2 {
-            margin: 5px 0; /* Reduce espacio superior e inferior */
-            font-size: 1.2em;
-        }
-
-        /* 🔹 Imágenes de las estaciones */
         .estacion img {
             width: 100%;
-            height: 150px; /* Mantiene una altura fija */
-            object-fit: cover; /* Evita que la imagen se deforme */
+            height: 150px; /* Fijar altura de la imagen */
+            object-fit: cover; /* Evita deformación y ajusta la imagen */
             border-radius: 5px;
             border: 2px solid black;
             pointer-events: none;
@@ -76,7 +58,6 @@
             -webkit-user-drag: none;
         }
 
-        /* 🔹 Botones */
         button {
             background-color: black;
             color: white;
@@ -91,23 +72,18 @@
             background-color: gray;
             cursor: not-allowed;
         }
-
-        /* 🔹 Footer fijo al final sin ser flotante */
         footer {
             background-color: #00264d;
             padding: 10px;
             width: 100%;
-            margin-top: auto;
-            text-align: center;
+            margin-top: auto; /* Hace que el footer siempre esté al final */
         }
-
-        /* 🔹 Asegurar que las imágenes no causen scroll horizontal */
-        img {
-            max-width: 100%;
-            height: auto;
+        .content {
+            flex-grow: 1; /* Asegura que el contenido empuje el footer hacia abajo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        /* 🔹 Ajustes en móvil */
         @media (max-width: 768px) {
             .estaciones-container {
                 flex-direction: column;
@@ -128,21 +104,21 @@
         <div class="estaciones-container">
             <!-- Barcelona Plaza (Ahora la primera opción) -->
             <div class="estacion">
-                <h2>Golden Barcelona <br>Plaza<br>E13991</h2>
+                <h2>Golden Barcelona Plaza<br>E13991</h2>
                 <img src="images/barcelona.jpg" alt="Golden Barcelona">
                 <button onclick="location.href='https://www.google.com.mx/'">Facturar</button>
             </div>
 
             <!-- Leyva Solano Centro (Segunda opción) -->
             <div class="estacion">
-                <h2>Golden Leyva Solano <br>Centro<br>E11777</h2>
+                <h2>Golden Leyva Solano Centro<br>E11777</h2>
                 <img src="images/leyva.jpg" alt="Golden Leyva">
                 <button disabled>Próximamente</button>
             </div>
 
             <!-- Bugambilias Aeropuerto (Última opción) -->
             <div class="estacion">
-                <h2>Golden Bugambilias <br>Aeropuerto<br>E5643</h2>
+                <h2>Golden Bugambilias Aeropuerto<br>E5643</h2>
                 <img src="images/bugambili.jpg" alt="Golden Bugambilias">
                 <button disabled>Próximamente</button>
             </div>
@@ -154,14 +130,12 @@
     </footer>
     
     <script>
-        /* 🔹 Bloquear clic derecho en imágenes */
         document.addEventListener("contextmenu", function (event) {
             if (event.target.tagName === "IMG") {
                 event.preventDefault();
             }
         });
-
-        /* 🔹 Bloquear atajos para inspeccionar */
+        
         document.addEventListener("keydown", function (event) {
             if (event.ctrlKey && (event.key === "u" || event.key === "s" || event.key === "Shift" || event.key === "I" || event.key === "J" || event.key === "C")) {
                 event.preventDefault();
@@ -170,4 +144,3 @@
     </script>
 </body>
 </html>
-
