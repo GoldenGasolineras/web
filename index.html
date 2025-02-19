@@ -39,22 +39,25 @@
             background-color: #00264d;
             border-radius: 10px;
             padding: 15px;
-            width: 250px;
+            width: 250px; /* Fijar ancho */
+            height: 350px; /* Fijar alto para que no crezca con la imagen */
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Espaciado uniforme */
         }
+
         .estacion img {
             width: 100%;
-            max-width: 300px;
+            height: 150px; /* Fijar altura de la imagen */
+            object-fit: cover; /* Evita deformación y ajusta la imagen */
             border-radius: 5px;
             border: 2px solid black;
             pointer-events: none;
             user-drag: none;
             -webkit-user-drag: none;
         }
-        .espacio-extra {
-            background-color: transparent;
-            height: 100px; /* Espacio "falso" para empujar el footer */
-        }
+
         button {
             background-color: black;
             color: white;
@@ -64,6 +67,7 @@
             width: 100%;
             cursor: pointer;
         }
+
         button:disabled {
             background-color: gray;
             cursor: not-allowed;
@@ -72,9 +76,13 @@
             background-color: #00264d;
             padding: 10px;
             width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            margin-top: auto; /* Hace que el footer siempre esté al final */
+        }
+        .content {
+            flex-grow: 1; /* Asegura que el contenido empuje el footer hacia abajo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         @media (max-width: 768px) {
             .estaciones-container {
@@ -89,32 +97,32 @@
         <img src="images/logo.jpg" alt="Golden Gasolinera" class="logo">
     </header>
     
-    <main>
+    <main class="content">
         <h1>¡Bienvenido/a!</h1>
         <p>Seleccione la estación de su ticket para facturar</p>
         
         <div class="estaciones-container">
-            <div class="estacion">
-                <h2>Golden Bugambilias Aeropuerto<br>E5643</h2>
-                <img src="images/bugambilias.jpg" alt="Golden Bugambilias">
-                <button disabled>Próximamente</button>
-            </div>
-            
+            <!-- Barcelona Plaza (Ahora la primera opción) -->
             <div class="estacion">
                 <h2>Golden Barcelona Plaza<br>E13991</h2>
                 <img src="images/barcelona.jpg" alt="Golden Barcelona">
                 <button onclick="location.href='https://www.google.com.mx/'">Facturar</button>
             </div>
-            
+
+            <!-- Leyva Solano Centro (Segunda opción) -->
             <div class="estacion">
                 <h2>Golden Leyva Solano Centro<br>E11777</h2>
                 <img src="images/leyva.jpg" alt="Golden Leyva">
                 <button disabled>Próximamente</button>
             </div>
+
+            <!-- Bugambilias Aeropuerto (Última opción) -->
+            <div class="estacion">
+                <h2>Golden Bugambilias Aeropuerto<br>E5643</h2>
+                <img src="images/bugambilias.jpg" alt="Golden Bugambilias">
+                <button disabled>Próximamente</button>
+            </div>
         </div>
-        
-        <!-- Estación "fantasma" para empujar el footer -->
-        <div class="espacio-extra"></div>
     </main>
     
     <footer>
